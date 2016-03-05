@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sightcorp.webapi.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/icsw2_32.css' %}">
+
+    {% block stylesheets_extend %}{% endblock %}
+
+  </head>
+
+  <body>
+	
+    {% block content %}
+
+    {% endblock %}
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.webcam.min.js' %}"></script>
+    {% block scripts_extend %}
+
+    {% endblock %}
+</body>
+</html>

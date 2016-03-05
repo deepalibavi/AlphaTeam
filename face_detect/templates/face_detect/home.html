@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div id="wrap"> <!-- this wrap id is needed for the sticky footer! -->
+
+<div class="container">
+  <div class="row">
+    <br>
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8 square">
+      <h1>Basic Usage Demo</h1>
+      <div class="row horizontal-line">
+        <div class="col-md-6">
+          <h3 class="demo_title">Image source</h3>
+        </div>
+        <div class="col-md-6">
+          <h3 class="demo_title">Face detection</h3>
+        </div>
+      </div>
+
+      <div class="row" id="demo-content">
+
+        <div class="col-md-6">
+
+          <div class="well">
+            <button id="btn-start" type="button" class="btn btn-default demo-button">
+              <span class="glyphicon glyphicon-play"></span>&nbsp; Start Analysis
+            </button>
+            <button id="btn-stop" type="button" style="display: none;" class="btn btn-default demo-button">
+              <span class="glyphicon glyphicon-stop"></span>&nbsp; Stop Analysis
+            </button>
+          </div>
+
+          <div class="well">
+            <h4>Pick from local storage</h4>
+            <div class="btn btn-default btn-block file-input">
+              <span class="glyphicon glyphicon-folder-open"></span>
+              <input type="file" accept="image/*;capture=camera">&nbsp; Pick an image
+            </div>
+          </div>
+
+          <video autoplay="true" id="videoElement" style="position: relative;border-radius: 4px;height: 226px;width: 311px;padding: 0px;"></video>
+
+          <div class="well">
+            <h4>Pick from remote resource</h4>
+            <div class="input-group">
+              <input id="FACE_SRC_WEB" type="text" class="form-control" placeholder="http://www.example.com/picure.jpeg">
+              <span class="input-group-btn">
+                <button class="btn btn-default" onclick="downloadRemotePicture();">
+                  <span class="glyphicon glyphicon-cloud-download"></span>
+                </button>
+              </span>
+            </div>
+          </div>
+
+          <div class="well" id="report" style="display: none;">
+            <button id="btn-snapshot" type="button" class="btn btn-default demo-button" onclick="takePicture();">
+              <span class="glyphicon glyphicon-camera"></span>&nbsp; Display Report
+            </button>
+          </div>
+
+        </div>
+
+        <div id="webcam"></div>
+
+        <div class="col-md-6">
+
+          <div class="well">
+            <h4>Preview</h4>
+            <img id="FACE_THUMB" src="{% static 'images/portrait_dummy.png' %}" class="img-rounded">
+            <input class="btn btn-default demo-button" type="submit" value="Scan" onclick="sendDetectRequest()">
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Result</h3>
+            </div>
+            <div class="panel-body">
+              <pre id="FACE_JSON_response" class="pre-scrollable">JSON response</pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+</div>
+
+	
+    </div>
+
+{% endblock %}
+
+{% block scripts_extend %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock scripts_extend %}
